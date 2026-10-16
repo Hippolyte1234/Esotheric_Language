@@ -1,0 +1,125 @@
+Le secont LLM que j'ai utilisé est Claude Sonnet 5.5 Moyen, je lui ai également donné SPEC.md et voici la première version:
+
+Listen to Tommy
+Listen to Gina
+Listen to Vince
+Cast Tommy
+Cast Gina
+Cast Vince
+
+Put Gina times Gina into Delta
+Put Tommy times Vince into Sue
+Put Sue times 4 into Sue
+Put Delta minus Sue into Delta
+Put Tommy times 2 into Twoa
+Put 0 minus Gina into Negb
+
+If Tommy is 0
+Say "a vaut 0 : ce n'est pas une equation du second degre"
+
+If Tommy is not 0 and Delta is 0
+Put Negb over Twoa into Root
+Say Root
+
+If Tommy is not 0 and Delta is less than 0
+Say "Delta negatif : pas de solution reelle"
+
+If Tommy is not 0 and Delta is greater than 0
+Put Delta into Guess
+Put 0 into Count
+While Count is less than 40
+Put Delta over Guess into Quot
+Put Guess plus Quot into Guess
+Put Guess over 2 into Guess
+Build Count up
+
+Put Negb plus Guess into Top
+Put Top over Twoa into First
+Put Negb minus Guess into Top
+Put Top over Twoa into Second
+Say First
+Say Second
+
+
+
+
+Il y avait quelques bugs, je lui ai donc expliqué les bugs et demandé de refaire une autre version:
+
+Voici la deuxième version, qui fonctionnait:
+
+
+Listen to Tommy
+Listen to Gina
+Listen to Vince
+Cast Tommy
+Cast Gina
+Cast Vince
+
+Put Gina times Gina into Delta
+Put Tommy times Vince into Sue
+Put Sue times 4 into Sue
+Put Delta minus Sue into Delta
+Put Tommy times 2 into Twoa
+Put 0 minus Gina into Negb
+
+If Tommy is 0
+Say "a vaut 0 : ce n'est pas une equation du second degre"
+
+If Tommy is not 0 and Delta is 0
+Put Negb over Twoa into Root
+Say Root
+
+If Tommy is not 0 and Delta is less than 0
+Say "Delta negatif : pas de solution reelle"
+
+If Tommy is not 0 and Delta is greater than 0
+Put Delta into Guess
+Put 0 into Count
+While Count is less than 40
+Put Delta over Guess into Quot
+Put Guess plus Quot into Guess
+Put Guess over 2 into Guess
+Build Count up
+
+Put Negb plus Guess into Numa
+Put Numa over Twoa into First
+Put Negb minus Guess into Numa
+Put Numa over Twoa into Second
+Say First
+Say Second
+
+
+J'ai donc obtenu une version sans bugs au bout de 2 itérations, voici les tests:
+
+test 1:
+4
+1
+2
+
+Delta negatif : pas de solution reelle
+Program completed in 126 ms
+
+test 2:
+1
+2
+1
+
+-1
+Program completed in 124 ms
+
+test 3:
+1
+5
+2
+
+-0.4384471871911697
+-4.561552812808831
+Program completed in 126 ms
+
+test 4:
+0
+1
+1
+
+a vaut 0 : ce n'est pas une equation du second degre
+Program completed in 122 ms

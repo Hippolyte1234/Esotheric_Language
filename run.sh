@@ -1,0 +1,2 @@
+Etant donné que je n'avais pas accès au langage Rockstar dans un vrai Interpréteur/Compilateur, je n'avais pas de terminal et ne pouvais donc pas appliquer les tests à la suite grâce à un script .sh
+Je n'avais qu'une version de compilateur en ligne qui fonctionnait sur laquelle je devais refaire les tests un par un: https://old.codewithrockstar.com/online

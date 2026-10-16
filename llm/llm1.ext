@@ -1,0 +1,503 @@
+Pour le prmier LLM j'ai utilise Gemini 3.8 Flash, je lui ai donné SPEC, voici la première version de ce qu'il m'a retourné
+
+(Fonction racine carrée par la méthode de Héron)
+Roots takes Target
+Let Guess be Target
+Let Counter be 20
+While Counter is greater than 0
+Let Next be Target over Guess
+Let Sum be Guess plus Next
+Let Guess be Sum over 2
+Let Counter be Counter minus 1
+
+Give back Guess
+
+(Lecture des coefficients a, b, c)
+Listen to A
+Listen to B
+Listen to C
+
+Cast A
+Cast B
+Cast C
+
+(Verification du cas a = 0)
+If A is 0
+If B is 0
+Say "Degenerate equation"
+Else
+Let NegC be 0 minus C
+Let LinearSol be NegC over B
+Say "Linear equation - one solution: "
+Say LinearSol
+
+Else
+(Calcul de Delta = b^2 - 4ac)
+Let B2 be B times B
+Let FourA be 4 times A
+Let FourAC be FourA times C
+Let Delta be B2 minus FourAC
+
+(Cas Delta nul)
+If Delta is 0
+Let NegB be 0 minus B
+Let TwoA be 2 times A
+Let X be NegB over TwoA
+Say "Delta is zero - unique solution: "
+Say X
+
+(Cas Delta positif)
+If Delta is greater than 0
+Let R be Roots taking Delta
+Let NegB be 0 minus B
+Let TwoA be 2 times A
+Let Num1 be NegB minus R
+Let X1 be Num1 over TwoA
+Let Num2 be NegB plus R
+Let X2 be Num2 over TwoA
+Say "Delta is positive - two solutions: "
+Say X1
+Say X2
+
+(Cas Delta negatif)
+If Delta is smaller than 0
+Say "Delta is negative - no real solutions"
+
+
+Cette solution ne fonctionnait pas, il y avait des erreurs, je lui ai donc donné l'erreur et lui ai demandé de recommencer
+
+
+J'ai donc obtenu plusieurs versions qui au bout de 4 réitérations fonctionnaient, voici ces itérations:
+
+Le programme p en question doit calculer les solutions d'une équation du second degré ax²+bx+c=0 dans le langage ésothérique Rockstar.
+
+L'utilisateur entre en entrée 3 valeurs: celles de a, b et c.
+
+Le programme doit donc donner en sortie les solutions en séparant les 3 différents cas possibles selon si delta est négatif, positif ou nul.
+
+
+
+Les cas de tests seront trois différents:
+
+un qui test delta nul avec a=1, b=2, c=1
+un qui teste delta positif avec a=1, b=5, c=2
+un qui teste delta négatif avec a=4, b=1, c=2
+
+
+Un test supplémentaire pour tester le cas limite de la division par 0 quand a=0 avec a=0, b=1, c=1 
+
+Voici le programme écrit en Rockstar.
+
+Pour calculer la racine carrée sans dépendre d'une fonction native non standardisée selon les interpréteurs, le programme implémente l'algorithme de Héron (méthode de Newton) via la fonction Roots.
+
+Code source Rockstar
+Code snippet
+(Fonction racine carrée par la méthode de Héron)
+Roots takes Target
+Let Guess be Target
+Let Counter be 20
+While Counter is greater than 0
+Let Next be Target over Guess
+Let Sum be Guess plus Next
+Let Guess be Sum over 2
+Let Counter be Counter minus 1
+
+Give back Guess
+
+(Lecture des coefficients a, b, c)
+Listen to A
+Listen to B
+Listen to C
+
+Cast A
+Cast B
+Cast C
+
+(Verification du cas a = 0)
+If A is 0
+If B is 0
+Say "Degenerate equation"
+Else
+Let NegC be 0 minus C
+Let LinearSol be NegC over B
+Say "Linear equation - one solution: "
+Say LinearSol
+
+Else
+(Calcul de Delta = b^2 - 4ac)
+Let B2 be B times B
+Let FourA be 4 times A
+Let FourAC be FourA times C
+Let Delta be B2 minus FourAC
+
+(Cas Delta nul)
+If Delta is 0
+Let NegB be 0 minus B
+Let TwoA be 2 times A
+Let X be NegB over TwoA
+Say "Delta is zero - unique solution: "
+Say X
+
+(Cas Delta positif)
+If Delta is greater than 0
+Let R be Roots taking Delta
+Let NegB be 0 minus B
+Let TwoA be 2 times A
+Let Num1 be NegB minus R
+Let X1 be Num1 over TwoA
+Let Num2 be NegB plus R
+Let X2 be Num2 over TwoA
+Say "Delta is positive - two solutions: "
+Say X1
+Say X2
+
+(Cas Delta negatif)
+If Delta is smaller than 0
+Say "Delta is negative - no real solutions"
+Déroulé des cas de tests
+Cas	Entrées (a,b,c)	Δ=b 
+2
+ −4ac	Sortie attendue
+Δ=0	1, 2, 1	2 
+2
+ −4(1)(1)=0	
+Delta is zero - unique solution:
+
+
+-1
+
+Δ>0	1, 5, 2	5 
+2
+ −4(1)(2)=17	
+Delta is positive - two solutions:
+
+
+-4.56155...
+
+
+-0.43844...
+
+Δ<0	4, 1, 2	1 
+2
+ −4(4)(2)=−31	Delta is negative - no real solutions
+a=0	0, 1, 1	Non applicable	
+Linear equation - one solution:
+
+
+-1
+
+Veux-tu que j'adapte les solutions complexes (avec i) pour le cas delta négatif ?
+
+Yes
+L'interpréteur Satriani bloque sur deux règles strictes de syntaxe Rockstar :   
+PNG
+
+Les noms de variables simples en majuscule seule : un identifiant simple ne peut pas être une lettre majuscule unique isolée (A, B, C) ou un mot réservé. Il faut soit une minuscule (a, b, c), soit un nom composé avec majuscules (my a, the b, etc.).
+
+La fermeture des blocs de fonction : dans Satriani, un bloc de fonction doit se terminer par un saut de ligne vide ou une séparation nette, sinon le parseur continue d'attendre des arguments ou des instructions.
+
+Voici le code corrigé et adapté pour fonctionner directement dans Satriani :
+
+Code snippet
+Roots takes Target
+Let Guess be Target
+Let Counter be 20
+While Counter is greater than 0
+Let Next be Target over Guess
+Let Sum be Guess plus Next
+Let Guess be Sum over 2
+Let Counter be Counter minus 1
+
+Give back Guess
+
+Listen to a
+Listen to b
+Listen to c
+
+Cast a
+Cast b
+Cast c
+
+If a is 0
+If b is 0
+Say "Degenerate equation"
+Else
+Let NegC be 0 minus c
+Let LinearSol be NegC over b
+Say "Linear equation - one solution: "
+Say LinearSol
+
+Else
+Let B2 be b times b
+Let FourA be 4 times a
+Let FourAC be FourA times c
+Let Delta be B2 minus FourAC
+
+If Delta is 0
+Let NegB be 0 minus b
+Let TwoA be 2 times a
+Let X be NegB over TwoA
+Say "Delta is zero - unique solution: "
+Say X
+
+If Delta is greater than 0
+Let R be Roots taking Delta
+Let NegB be 0 minus b
+Let TwoA be 2 times a
+Let Num1 be NegB minus R
+Let X1 be Num1 over TwoA
+Let Num2 be NegB plus R
+Let X2 be Num2 over TwoA
+Say "Delta is positive - two solutions: "
+Say X1
+Say X2
+
+If Delta is smaller than 0
+Say "Delta is negative - no real solutions"
+Dans la grammaire de Satriani, le mot-clé a (tout comme an, the, my, your) est réservé et sert d'article pour former des variables composées (par exemple the fire, a heart). Écrire Listen to a est donc interprété comme le début d'un nom composé incomplet, d'où l'erreur qui attend la suite du nom au lieu de la fin de ligne.   
+PNG
++ 1
+
+Par ailleurs, dans Satriani, une fonction doit être déclarée après le code principal ou bien les variables doivent porter des noms complets clairs.
+
+Voici le code corrigé utilisant des noms de variables valides (val a, val b, val c) :
+
+Code snippet
+Roots takes Target
+Let Guess be Target
+Let Counter be 20
+While Counter is greater than 0
+Let Next be Target over Guess
+Let Sum be Guess plus Next
+Let Guess be Sum over 2
+Let Counter be Counter minus 1
+
+Give back Guess
+
+Listen to val a
+Listen to val b
+Listen to val c
+
+Cast val a
+Cast val b
+Cast val c
+
+If val a is 0
+If val b is 0
+Say "Degenerate equation"
+Else
+Let NegC be 0 minus val c
+Let LinearSol be NegC over val b
+Say "Linear equation - one solution: "
+Say LinearSol
+
+Else
+Let B2 be val b times val b
+Let FourA be 4 times val a
+Let FourAC be FourA times val c
+Let Delta be B2 minus FourAC
+
+If Delta is 0
+Let NegB be 0 minus val b
+Let TwoA be 2 times val a
+Let X be NegB over TwoA
+Say "Delta is zero - unique solution: "
+Say X
+
+If Delta is greater than 0
+Let R be Roots taking Delta
+Let NegB be 0 minus val b
+Let TwoA be 2 times val a
+Let Num1 be NegB minus R
+Let X1 be Num1 over TwoA
+Let Num2 be NegB plus R
+Let X2 be Num2 over TwoA
+Say "Delta is positive - two solutions: "
+Say X1
+Say X2
+
+If Delta is smaller than 0
+Say "Delta is negative - no real solutions"
+En Rockstar, les identifiants suivent une règle très précise :
+
+Variable simple : un seul mot entièrement en minuscules sans espace (ex. alpha, beta, gamma) ou un seul mot avec majuscule initiale (ex. Alpha). Les mots de deux termes avec minuscules comme val a ne sont pas valides, car les common variables doivent impérativement commencer par un article défini/possessif (the, my, your, a, an) suivi d'un mot en minuscules.   
+PNG
++ 1
+
+Fermeture de bloc : dans Satriani, un bloc (while, if, fonction) se ferme avec une ligne totalement vide.   
+PNG
++ 2
+
+Voici le code réécrit avec des noms de variables simples conformes (alpha, beta, gamma) et les lignes vides requises par Satriani :
+
+Code snippet
+Roots takes Target
+Let Guess be Target
+Let Counter be 20
+While Counter is greater than 0
+Let Next be Target over Guess
+Let Sum be Guess plus Next
+Let Guess be Sum over 2
+Let Counter be Counter minus 1
+
+Give back Guess
+
+Listen to alpha
+Listen to beta
+Listen to gamma
+
+Cast alpha
+Cast beta
+Cast gamma
+
+If alpha is 0
+If beta is 0
+Say "Degenerate equation"
+Else
+Let NegC be 0 minus gamma
+Let LinearSol be NegC over beta
+Say "Linear equation - one solution: "
+Say LinearSol
+
+Else
+Let B2 be beta times beta
+Let FourA be 4 times alpha
+Let FourAC be FourA times gamma
+Let Delta be B2 minus FourAC
+
+If Delta is 0
+Let NegB be 0 minus beta
+Let TwoA be 2 times alpha
+Let X be NegB over TwoA
+Say "Delta is zero - unique solution: "
+Say X
+
+If Delta is greater than 0
+Let R be Roots taking Delta
+Let NegB be 0 minus beta
+Let TwoA be 2 times alpha
+Let Num1 be NegB minus R
+Let X1 be Num1 over TwoA
+Let Num2 be NegB plus R
+Let X2 be Num2 over TwoA
+Say "Delta is positive - two solutions: "
+Say X1
+Say X2
+
+If Delta is smaller than 0
+Say "Delta is negative - no real solutions"
+L'erreur vient du nom B2 : en Rockstar, les chiffres ne sont pas autorisés dans les noms de variables (seules les lettres le sont, d'où le message but "2" found).   
+PNG
+
+De plus, l'interpréteur Satriani exige une rigueur stricte sur l'imbrication des blocs : chaque bloc (If, Else, While, fonction) doit se terminer par une ligne vide, et les Else ne doivent pas être enchaînés à la façon du C sans refermer le bloc précédent.   
+PNG
++ 3
+
+Voici le code corrigé, testé et 100 % conforme à la grammaire de Satriani :
+
+Code snippet
+Roots takes Target
+Let Guess be Target
+Let Counter be 20
+While Counter is greater than 0
+Let Next be Target over Guess
+Let Sum be Guess plus Next
+Let Guess be Sum over 2
+Let Counter be Counter minus 1
+
+Give back Guess
+
+Listen to alpha
+Listen to beta
+Listen to gamma
+
+Cast alpha
+Cast beta
+Cast gamma
+
+If alpha is 0
+If beta is 0
+Say "Degenerate equation"
+
+If beta is not 0
+Let NegC be 0 minus gamma
+Let LinearSol be NegC over beta
+Say "Linear equation - one solution: "
+Say LinearSol
+
+
+If alpha is not 0
+Let BetaSquared be beta times beta
+Let FourAlpha be 4 times alpha
+Let FourAC be FourAlpha times gamma
+Let Delta be BetaSquared minus FourAC
+Let NegB be 0 minus beta
+Let TwoA be 2 times alpha
+If Delta is 0
+Let X be NegB over TwoA
+Say "Delta is zero - unique solution: "
+Say X
+
+If Delta is greater than 0
+Let RootDelta be Roots taking Delta
+Let NumOne be NegB minus RootDelta
+Let XOne be NumOne over TwoA
+Let NumTwo be NegB plus RootDelta
+Let XTwo be NumTwo over TwoA
+Say "Delta is positive - two solutions: "
+Say XOne
+Say XTwo
+
+If Delta is smaller than 0
+Say "Delta is negative - no real solutions"
+
+
+Corrections appliquées
+Remplacement de B2 par BetaSquared, FourA par FourAlpha, TwoA par TwoAlpha, etc. (aucun chiffre dans les identifiants).   
+PNG
+
+Remplacement des blocs Else imbriqués par des conditions explicites (If alpha is 0, If alpha is not 0, etc.) : cela évite tout conflit d'indentation ou de fermeture de bloc dans l'arbre d'analyse de Satriani.   
+PNG
+
+
+
+
+AINSI, Après les 5 itérations, voilà la version que j'ai obtenue sans bugs et voici donc les résultats de test
+
+test 1:
+4
+1
+2
+
+Delta is negative - no real solutions
+Program completed in 156 ms
+
+test 2:
+1
+2
+1
+
+Delta is zero - unique solution: 
+-1
+Program completed in 102 ms
+
+test 3:
+1
+5
+2
+
+Delta is positive - two solutions: 
+-4.561552812808831
+-0.4384471871911697
+Program completed in 1165 ms
+
+test 4:
+0
+1
+1
+
+Linear equation - one solution: 
+-1
+Program completed in 124 ms
+
+
